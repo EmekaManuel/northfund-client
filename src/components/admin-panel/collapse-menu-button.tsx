@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { ChevronDown, Dot, LucideIcon } from "lucide-react";
 
@@ -103,7 +103,7 @@ export function CollapseMenuButton({
             className="mb-1 h-10 w-full justify-start"
             asChild
           >
-            <Link href={href}>
+            <NavLink to={href}>
               <span className="ml-2 mr-4">
                 <Dot size={18} />
               </span>
@@ -117,7 +117,7 @@ export function CollapseMenuButton({
               >
                 {label}
               </p>
-            </Link>
+            </NavLink>
           </Button>
         ))}
       </CollapsibleContent>
@@ -162,9 +162,9 @@ export function CollapseMenuButton({
         <DropdownMenuSeparator />
         {submenus.map(({ href, label }, index) => (
           <DropdownMenuItem key={index} asChild>
-            <Link className="cursor-pointer" href={href}>
+            <NavLink className="cursor-pointer" to={href}>
               <p className="max-w-[180px] truncate">{label}</p>
-            </Link>
+            </NavLink>
           </DropdownMenuItem>
         ))}
         <DropdownMenuArrow className="fill-border" />

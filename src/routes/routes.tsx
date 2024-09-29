@@ -6,8 +6,9 @@ const NewCampaignPage = lazy(() => import("../pages/newCampaignPage"));
 
 const HomePage = lazy(() => import("../pages/homePage"));
 import AllCampaignsPage from "../pages/allCampaignsPage";
+import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
 const CampaignDetailPage = lazy(() => import("../pages/campaignDetailPage"));
-const DashboardPage = lazy(() => import("../pages/dashboardPage"));
+// const DashboardPage = lazy(() => import("../pages/dashboardPage"));
 
 export const routes = [
   {
@@ -17,12 +18,12 @@ export const routes = [
   },
   {
     path: "/dashboard",
-    element: <DashboardPage />,
+    element: <AdminPanelLayout />,
     layout: "dashboard",
     children: [
       {
         path: "campaigns",
-        element: <AllCampaignsPage />,
+        element: <MyCampaignsPage />,
       },
       {
         path: "campaigns/new",

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Logo } from "../logo";
 import { cn } from "@/lib/utils";
 import { useStore } from "@/hooks/use-store";
@@ -29,7 +29,7 @@ export function Sidebar() {
           variant="link"
           asChild
         >
-          <Link href="/dashboard" className="flex items-center gap-2">
+          <Link to="/dashboard" className="flex items-center gap-2">
             <Logo />
             <h1
               className={cn(
@@ -39,7 +39,7 @@ export function Sidebar() {
                   : "translate-x-0 opacity-100"
               )}
             >
-              Solafund
+              NorthFund
             </h1>
           </Link>
         </Button>

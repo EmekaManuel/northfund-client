@@ -11,7 +11,7 @@ export function Footer() {
             rel="noopener noreferrer"
             className="font-medium underline underline-offset-4"
           >
-            Kds
+            Manuel Of The North
           </Link>
           . The source code is available on{" "}
           <Link
