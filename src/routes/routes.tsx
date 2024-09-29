@@ -7,6 +7,7 @@ const NewCampaignPage = lazy(() => import("../pages/newCampaignPage"));
 const HomePage = lazy(() => import("../pages/homePage"));
 import AllCampaignsPage from "../pages/allCampaignsPage";
 import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
+import CampaignLayout from "@/components/campaigns/campaign-layout";
 const CampaignDetailPage = lazy(() => import("../pages/campaignDetailPage"));
 // const DashboardPage = lazy(() => import("../pages/dashboardPage"));
 
@@ -37,9 +38,13 @@ export const routes = [
   },
   {
     path: "/campaigns",
-    element: <AllCampaignsPage />,
+    element: <CampaignLayout />,
     layout: "dashboard",
     children: [
+      {
+        path: "",
+        element: <AllCampaignsPage />,
+      },
       {
         path: "campaigns/:pdaAddress",
         element: <CampaignDetailPage />,

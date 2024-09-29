@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MenuIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -9,12 +9,13 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { usePathname } from "next/navigation";
 import { ModeToggle } from "../mode-toggle";
 import { SelectNetwork } from "@/components/admin-panel/select-network";
 import { Logo } from "../logo";
 export function SheetMenu() {
-  const pathName = usePathname();
+  const location = useLocation();
+  const { pathname: pathName } = location;
+
   return (
     <Sheet>
       <SheetTrigger className="lg:hidden" asChild>
