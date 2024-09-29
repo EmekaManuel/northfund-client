@@ -24,21 +24,16 @@ type BaseWalletMultiButtonProps = any & {
 export function BaseWalletMultiButton({
   children,
   labels,
+  walletName,
   ...props
 }: BaseWalletMultiButtonProps) {
   const { setVisible: setModalVisible } = useWalletModal();
-  const {
-    buttonState,
-    onConnect,
-    onDisconnect,
-    publicKey,
-    walletIcon,
-    walletName,
-  } = useWalletMultiButton({
-    onSelectWallet() {
-      setModalVisible(true);
-    },
-  });
+  const { buttonState, onConnect, onDisconnect, publicKey, walletIcon } =
+    useWalletMultiButton({
+      onSelectWallet() {
+        setModalVisible(true);
+      },
+    });
   const { selectedNetwork } = useContext(SessionContext);
   const [walletBalance, setWalletBalance] = useState(0);
   const [copied, setCopied] = useState(false);
