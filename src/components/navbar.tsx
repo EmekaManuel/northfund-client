@@ -1,5 +1,3 @@
-"use client";
-
 import { SheetMenu } from "@/components/admin-panel/sheet-menu";
 import { WalletConnectButton } from "@/components/wallets";
 import { ModeToggle } from "./mode-toggle";
