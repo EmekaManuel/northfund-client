@@ -1,16 +1,25 @@
-export interface CampaignData {
-  orgName: string;
-  projectTitle: string;
-  description: string;
-  raised: number;
-  goal: number;
-  imageLink: string;
+export interface Campaign {
+  donationCompleted: boolean;
+  claimed: boolean;
+
+  email: string;
+  title: string;
+  name: string;
+
+  matricNumber: string;
+  courseOfStudy: string;
+  yearOfEntry: number;
+
+  studentImageUrl: string;
+  studentResultImageUrl: string;
+
+  fundingReason: string;
   projectLink: string;
-  pdaAddress: string;
+
+  goal: number;
+  totalDonated: number;
   startTimestamp: number;
   endTimestamp: number;
-  donationCompleted: boolean;
-  isClaimed: boolean;
 }
 
 export interface ContributionData {
