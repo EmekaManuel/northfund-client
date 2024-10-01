@@ -13,6 +13,7 @@ export async function getAccountBalance(
   try {
     balance = (await connection.getBalance(wallet)) / LAMPORTS_PER_SOL;
   } catch (error) {
+    console.log(error);
     balance = 0;
   }
   return balance;
