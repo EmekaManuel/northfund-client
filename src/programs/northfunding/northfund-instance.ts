@@ -5,7 +5,7 @@ import { Connection } from "@solana/web3.js";
 import { getAlchemyRpcUrl } from "@/services/web3";
 import { getProgramId } from "./programId";
 
-export async function NorthfundProgramInstance(
+export async function northfundProgramInstance(
   network: NetworkName
 ): Promise<Program<Northfund>> {
   const rpcUrl = await getAlchemyRpcUrl(network);
