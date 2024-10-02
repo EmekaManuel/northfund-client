@@ -1,4 +1,4 @@
-export interface Campaign {
+export interface CampaignData {
   donationCompleted: boolean;
   claimed: boolean;
 
@@ -6,12 +6,15 @@ export interface Campaign {
   title: string;
   name: string;
 
+  admissionProofUrl: string; // image
+  universityName: string;
+
   matricNumber: string;
   courseOfStudy: string;
   yearOfEntry: number;
 
-  studentImageUrl: string;
-  studentResultImageUrl: string;
+  studentImageUrl: string; // image
+  studentResultImageUrl: string; // image
 
   fundingReason: string;
   projectLink: string;
@@ -20,6 +23,8 @@ export interface Campaign {
   totalDonated: number;
   startTimestamp: number;
   endTimestamp: number;
+
+  pdaAddress: string;
 }
 
 export interface ContributionData {
