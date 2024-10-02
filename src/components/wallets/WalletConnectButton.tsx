@@ -81,6 +81,7 @@ export function BaseWalletMultiButton({
   };
   useEffect(() => {
     updateWalletbalance();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [publicKey, selectedNetwork]);
 
   return (

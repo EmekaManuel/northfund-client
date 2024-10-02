@@ -34,6 +34,7 @@ export async function storeFile(
     );
     const uploadRes = await upload.json();
     return { result: uploadRes, errors: null };
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     console.log(error);
     return { result: null, errors: error.message };

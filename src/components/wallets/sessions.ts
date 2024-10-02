@@ -1,28 +1,27 @@
 import { NetworkName, SolanaNetworkDictionary } from "@/types";
 import React, { useState, useEffect } from "react";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
-// import { Program } from "@coral-xyz/anchor";
+import { Program } from "@coral-xyz/anchor";
 import * as anchor from "@coral-xyz/anchor";
-// import { IDL, CrowdfundingProgram, getProgamId } from "@/programs/crowdfunding";
+import { IDL, getProgramId, Northfund } from "@/programs/northfunding";
 import { clusterApiUrl } from "@solana/web3.js";
 
 export const SessionContext = React.createContext<{
   selectedNetwork: NetworkName;
-  // program: Program<CrowdfundingProgram> | null;
-  // setSelectedNetwork: any;
+  program: Program<Northfund> | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  setSelectedNetwork: any;
 }>({
   selectedNetwork: NetworkName.Devnet,
-  // program: null,
-  // setSelectedNetwork: () => {},
+  program: null,
+  setSelectedNetwork: () => {},
 });
 
 export function useSession() {
   const [selectedNetwork, setSelectedNetwork] = useState<NetworkName>(
     NetworkName.Devnet
   );
-  // const [program, setProgram] = useState<Program<CrowdfundingProgram> | null>(
-  //   null
-  // );
+  const [program, setProgram] = useState<Program<Northfund> | null>(null);
   const wallet = useAnchorWallet();
 
   useEffect(() => {
@@ -40,16 +39,16 @@ export function useSession() {
       );
       anchor.setProvider(provider);
 
-      // const programId = getProgamId(selectedNetwork);
+      const programId = getProgramId(selectedNetwork);
 
-      // const program = new anchor.Program(IDL, programId, provider);
-      // setProgram(program);
+      const program = new anchor.Program(IDL, programId, provider);
+      setProgram(program);
     }
   }, [selectedNetwork, wallet]);
 
   return {
     selectedNetwork,
-    // program,
+    program,
     setSelectedNetwork,
   };
 }

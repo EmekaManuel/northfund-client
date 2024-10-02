@@ -1,4 +1,3 @@
-import React, { useContext } from "react";
 import {
   Select,
   SelectContent,
@@ -8,8 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SessionContext } from "../wallets/sessions";
 import { NetworkName } from "@/types";
+import { useContext } from "react";
+import { SessionContext } from "../wallets/sessions";
 
 export const SelectNetwork = () => {
   const { setSelectedNetwork } = useContext(SessionContext);
