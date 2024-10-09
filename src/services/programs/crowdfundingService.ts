@@ -1,46 +1,69 @@
 import {
-  CrowdfundingProgram,
   getProgramDerivedCampaign,
   getProgramDerivedContribution,
-} from '@/programs/crowdfunding';
-import { getDateTimestamp } from '@/utils';
-import { Program, BN } from '@coral-xyz/anchor';
-import { LAMPORTS_PER_SOL, PublicKey } from '@solana/web3.js';
+  Northfund,
+} from "@/programs/northfunding";
+import { getDateTimestamp } from "@/utils";
+import { Program, BN } from "@coral-xyz/anchor";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
 
 export async function createCampaign(
-  program: Program<CrowdfundingProgram>,
+  program: Program<Northfund>,
   signer: PublicKey,
   data: {
+    email: string;
     title: string;
-    description: string;
-    org_name: string;
+    name: string;
+
+    admission_proof_url: string;
+    university_name: string;
+
+    matric_number: string;
+    course_of_study: string;
+    year_of_entry: number;
+
+    student_image_url: string;
+    student_result_image_url: string;
+
+    funding_reason: string;
     project_link: string;
-    project_image: string;
+
     goal: number;
-    startAt: Date;
-    endAt: Date;
-  },
+    start_at: Date;
+    end_at: Date;
+  }
 ): Promise<string> {
   const goal = new BN(data.goal * LAMPORTS_PER_SOL);
-  const startAt = new BN(getDateTimestamp(data.startAt));
-  const endAt = new BN(getDateTimestamp(data.endAt));
+  const startAt = new BN(getDateTimestamp(data.start_at));
+  const endAt = new BN(getDateTimestamp(data.end_at));
 
   const { campaign } = await getProgramDerivedCampaign(
     program.programId,
     signer,
-    data.title,
+    data.title
   );
 
   const tx = await program.methods
     .createCampaign(
+      data.email,
       data.title,
-      data.description,
-      data.org_name,
+      data.name,
+      data.admission_proof_url,
+      data.university_name,
+
+      data.matric_number,
+      data.course_of_study,
+      data.year_of_entry,
+
+      data.student_image_url,
+      data.student_result_image_url,
+
+      data.funding_reason,
       data.project_link,
-      data.project_image,
+
       goal,
       startAt,
-      endAt,
+      endAt
     )
     .accounts({ campaign })
     .rpc();
@@ -48,8 +71,8 @@ export async function createCampaign(
 }
 
 export async function cancelCampaign(
-  program: Program<CrowdfundingProgram>,
-  campaign: PublicKey,
+  program: Program<Northfund>,
+  campaign: PublicKey
 ): Promise<string> {
   const tx = await program.methods
     .cancelCampaign()
@@ -59,17 +82,17 @@ export async function cancelCampaign(
 }
 
 export async function donate(
-  program: Program<CrowdfundingProgram>,
+  program: Program<Northfund>,
   campaign: PublicKey,
   signer: PublicKey,
-  amount: number,
+  amount: number
 ): Promise<string> {
   const newAmount = new BN(amount * LAMPORTS_PER_SOL);
 
   const { contribution } = await getProgramDerivedContribution(
     program.programId,
     signer,
-    campaign,
+    campaign
   );
 
   const tx = await program.methods
@@ -80,14 +103,14 @@ export async function donate(
 }
 
 export async function cancelDonation(
-  program: Program<CrowdfundingProgram>,
+  program: Program<Northfund>,
   campaign: PublicKey,
-  signer: PublicKey,
+  signer: PublicKey
 ): Promise<string> {
   const { contribution } = await getProgramDerivedContribution(
     program.programId,
     signer,
-    campaign,
+    campaign
   );
 
   const tx = await program.methods
@@ -98,12 +121,9 @@ export async function cancelDonation(
 }
 
 export async function claimDonations(
-  program: Program<CrowdfundingProgram>,
-  campaign: PublicKey,
+  program: Program<Northfund>,
+  campaign: PublicKey
 ): Promise<string> {
-  const tx = await program.methods
-    .claimDonations()
-    .accounts({ campaign })
-    .rpc();
+  const tx = await program.methods.claimDonation().accounts({ campaign }).rpc();
   return tx;
 }
