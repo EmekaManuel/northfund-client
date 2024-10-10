@@ -8,6 +8,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import CampaignList from "@/components/admin-panel/campaign-list";
 // import FormCreateCampaign from "@/components/campaigns/form-create-campaign";
 
 const MyCampaignsPage = () => {
@@ -32,7 +33,7 @@ const MyCampaignsPage = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      {/* <FormCreateCampaign /> */}
+      <CampaignList />
     </ContentLayout>
   );
 };

@@ -1,5 +1,5 @@
 import { ContributionData, NetworkName } from "@/types";
-import Link from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { SessionContext } from "@/components/wallets";
 import { truncateAddress } from "@/utils";
@@ -22,7 +22,7 @@ export const Contributions = ({
       <div className="h-[300px] overflow-auto">
         <div className="mt-[10px] grid grid-cols-1 gap-[5px] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {contributions.map((item) => (
-            <Link
+            <NavLink
               target="_blank"
               to={`https://explorer.solana.com/address/${item.contributor}${
                 selectedNetwork === NetworkName.Devnet ? "?cluster=devnet" : ""
@@ -32,7 +32,7 @@ export const Contributions = ({
             >
               <span>{truncateAddress(item.contributor)}</span>
               <span className="font-bold">{` ${item.amount}`} SOL</span>
-            </Link>
+            </NavLink>
           ))}
         </div>
       </div>
