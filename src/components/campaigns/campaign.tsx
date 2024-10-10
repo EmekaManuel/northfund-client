@@ -37,25 +37,25 @@ export interface CampaignDetailProps {
 
 export const CampaignDetail = ({
   campaign: {
-    projectTitle,
-    orgName,
-    description,
-    raised,
+    title,
+    name,
+    fundingReason,
+    totalDonated,
     goal,
-    imageLink,
+    studentImageUrl,
     projectLink,
     pdaAddress,
     startTimestamp,
     endTimestamp,
     donationCompleted,
-    isClaimed,
+    claimed,
   },
   handleUpdateCampaign,
 }: CampaignDetailProps) => {
   const pathname = usePathname();
   const isDashboard = pathname.includes("/dashboard");
 
-  const raisedPercent = Math.floor((raised / goal) * 100);
+  const totalDonatedPercent = Math.floor((totalDonated / goal) * 100);
   const {
     days: startDays,
     hours: startHours,
@@ -127,7 +127,7 @@ export const CampaignDetail = ({
         <Image
           objectFit="cover"
           layout="fill"
-          src={imageLink}
+          src={studentImageUrl}
           alt="campaign image"
           className="transition-all delay-100 hover:scale-125"
         />
@@ -135,7 +135,7 @@ export const CampaignDetail = ({
 
       <div className="md:col-span-2">
         <div className="flex items-center justify-between">
-          <p className="text-[22px] font-bold">{projectTitle}</p>
+          <p className="text-[22px] font-bold">{title}</p>
 
           <CopyText
             text={`${process.env.NEXT_PUBLIC_APP_URL}/campaigns/${pdaAddress}`}
@@ -167,22 +167,22 @@ export const CampaignDetail = ({
           target="_blank"
           className="my-[20px] flex items-center gap-[5px] font-bold"
         >
-          {orgName}
+          {name}
           <ExternalLinkIcon height={22} width={22} />
         </a>
 
         <div className="grid grid-cols-1 gap-[15px] border-y-[2px] border-primary py-[15px] md:grid-cols-2 md:gap-0 md:py-0">
           <div className="border-primary md:border-r-[2px] md:py-[20px] md:pr-[15px]">
             <span className="text-[14px] font-bold">About Project</span>
-            <p>{description}</p>
+            <p>{fundingReason}</p>
           </div>
 
           <div className="flex flex-col justify-between gap-[10px] md:py-[20px] md:pl-[15px]">
             <div className="flex flex-col gap-[10px]">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[5px] font-semibold">
-                  <span className="text-[12px]">Raised</span>
-                  <span className="text-[14px]">{raised} SOL</span>
+                  <span className="text-[12px]">TotalDonated</span>
+                  <span className="text-[14px]">{totalDonated} SOL</span>
                 </div>
 
                 <div
@@ -195,7 +195,7 @@ export const CampaignDetail = ({
                 </div>
               </div>
 
-              <Progress value={raisedPercent} />
+              <Progress value={totalDonatedPercent} />
             </div>
 
             <div className="flex items-center justify-between">
@@ -267,10 +267,10 @@ export const CampaignDetail = ({
         {isDashboard && (
           <div className="mt-[20px] flex items-center justify-between">
             <Button
-              disabled={!donationCompleted || isClaimed}
+              disabled={!donationCompleted || claimed}
               onClick={handleClaimDonations}
             >
-              {isClaimed ? "Donation claimed" : "Withdraw donation"}
+              {claimed ? "Donation claimed" : "Withdraw donation"}
             </Button>
 
             <Button
