@@ -13,14 +13,14 @@ export function Footer() {
           >
             Manuel Of The North
           </Link>
-          . The source code is available on{" "}
+          {/* . The source code is available on{" "} */}
           <Link
             to="https://github.com/Kds-JS/crowdfunding-solana"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium underline underline-offset-4"
           >
-            GitHub
+            {/* GitHub */}
           </Link>
           .
         </p>
