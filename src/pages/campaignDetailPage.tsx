@@ -1,6 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import { Link, useParams } from "react-router-dom";
+import { CampaignDetails } from "@/components/admin-panel/campaign-detail";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 import {
   Breadcrumb,
@@ -10,14 +9,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { CampaignDetails } from "@/components/admin-panel/campaign-detail";
 import { truncateAddress } from "@/utils";
 
-type PageProps = {
-  params: { pda: string };
-};
+const CampaignDetailPage = () => {
+  const { pda } = useParams<{ pda: string }>();
 
-const CampaignDetailPage = ({ params: { pda } }: PageProps) => {
   return (
     <ContentLayout title={`Campaign: ${truncateAddress(pda)}`}>
       <Breadcrumb>
