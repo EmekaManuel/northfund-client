@@ -5,10 +5,11 @@ import { PublicKey } from "@solana/web3.js";
 export const getProgramDerivedCampaign = async (
   programId: PublicKey,
   signerKey: PublicKey,
-  campaignTitle: string
+  matricNumber: string
+  // campaignTitle: string
 ): Promise<{ campaign: web3.PublicKey; bump: number }> => {
-  const seeds_campaign = [Buffer.from(campaignTitle), signerKey.toBytes()];
-  const [campaign, bump] = await web3.PublicKey.findProgramAddressSync(
+  const seeds_campaign = [Buffer.from(matricNumber), signerKey.toBytes()];
+  const [campaign, bump] = web3.PublicKey.findProgramAddressSync(
     seeds_campaign,
     programId
   );
@@ -21,7 +22,7 @@ export const getProgramDerivedContribution = async (
   campaign: PublicKey
 ): Promise<{ contribution: web3.PublicKey; bump: number }> => {
   const seeds_contribution = [campaign.toBytes(), signerKey.toBytes()];
-  const [contribution, bump] = await web3.PublicKey.findProgramAddressSync(
+  const [contribution, bump] = web3.PublicKey.findProgramAddressSync(
     seeds_contribution,
     programId
   );

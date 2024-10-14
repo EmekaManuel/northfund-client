@@ -40,7 +40,7 @@ export async function createCampaign(
   const { campaign } = await getProgramDerivedCampaign(
     program.programId,
     signer,
-    data.title
+    data.matric_number
   );
 
   const tx = await program.methods

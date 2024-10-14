@@ -221,6 +221,7 @@ export default function FormCreateCampaign() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.error(error.message);
+      console.log(error, error.message);
     }
   }
 
@@ -447,12 +448,12 @@ export default function FormCreateCampaign() {
                 name="project_link"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Project Link</FormLabel>
+                    <FormLabel>Social Link</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter project link" {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is the link to your project.
+                      This is the link to your active social media.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
