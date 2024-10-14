@@ -5,7 +5,23 @@ import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Logo } from "@/components/logo";
 
+import Globe from "react-globe.gl";
+import CustomGlobe from "@/components/globe/custom-globe";
+
 const HomePage = () => {
+  const myData = [
+    { lat: -1.2921, lng: 36.8219, alt: 0.5, color: "red" }, // Nairobi, Kenya
+    { lat: 6.5244, lng: 3.3792, alt: 0.3, color: "blue" }, // Lagos, Nigeria
+    { lat: -26.2041, lng: 28.0473, alt: 0.7, color: "green" }, // Johannesburg, South Africa
+    { lat: 30.0444, lng: 31.2357, alt: 0.4, color: "yellow" }, // Cairo, Egypt
+    { lat: 14.7167, lng: -17.4677, alt: 0.6, color: "purple" }, // Dakar, Senegal
+    { lat: 5.6037, lng: -0.187, alt: 0.5, color: "orange" }, // Accra, Ghana
+    { lat: 33.5731, lng: -7.5898, alt: 0.5, color: "brown" }, // Casablanca, Morocco
+    { lat: -6.7924, lng: 39.2083, alt: 0.4, color: "pink" }, // Dar es Salaam, Tanzania
+    { lat: 9.0054, lng: 38.7636, alt: 0.5, color: "teal" }, // Addis Ababa, Ethiopia
+    { lat: -4.4419, lng: 15.2663, alt: 0.5, color: "cyan" }, // Kinshasa, DR Congo
+  ];
+
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-[50] w-full border-b border-border/40 bg-background/95 backdrop-blur-sm dark:bg-black/[0.6]">
@@ -57,8 +73,9 @@ const HomePage = () => {
               </Button>
             </div>
           </section>
-          {/* <div className="relative flex w-full justify-center">
-            <Image
+          <div className="relative flex w-full justify-center">
+            <CustomGlobe />,
+            {/* <Image
               src="/mdwhite.png"
               width={1080}
               height={608}
@@ -87,8 +104,8 @@ const HomePage = () => {
               height={494}
               alt="demo-mobile"
               className="absolute bottom-0 right-0 hidden rounded-xl border border-zinc-600 dark:lg:block"
-            />
-          </div> */}
+            /> */}
+          </div>
         </div>
       </main>
       <footer className="border-t border-border/40 py-6 md:py-0">
