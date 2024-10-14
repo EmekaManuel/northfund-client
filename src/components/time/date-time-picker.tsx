@@ -1,18 +1,16 @@
-'use client';
+import React, { useEffect } from "react";
+import { add, format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
 
-import React, { useEffect } from 'react';
-import { add, format } from 'date-fns';
-import { Calendar as CalendarIcon } from 'lucide-react';
-
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Calendar } from '@/components/ui/calendar';
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover';
-import { TimePicker } from './time-picker';
+} from "@/components/ui/popover";
+import { TimePicker } from "./time-picker";
 
 interface DateTimePickerProps {
   defautDate?: Date;
@@ -48,14 +46,14 @@ export function DateTimePicker({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={'outline'}
+          variant={"outline"}
           className={cn(
-            'w-[280px] justify-start text-left font-normal',
-            !date && 'text-muted-foreground',
+            "w-[280px] justify-start text-left font-normal",
+            !date && "text-muted-foreground"
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, 'PPP HH:mm:ss') : <span>Pick a date</span>}
+          {date ? format(date, "PPP HH:mm:ss") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">

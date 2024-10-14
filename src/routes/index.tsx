@@ -17,8 +17,20 @@ const AppRouter = () => {
   }, []);
   return (
     <AppLayout>
-      <Suspense fallback={<LoadingSpinner />}>
-        {isPending ? <LoadingSpinner /> : <RouterProvider router={router} />}
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center min-h-screen">
+            <LoadingSpinner />
+          </div>
+        }
+      >
+        {isPending ? (
+          <div className="flex items-center justify-center min-h-screen">
+            <LoadingSpinner />
+          </div>
+        ) : (
+          <RouterProvider router={router} />
+        )}
       </Suspense>
     </AppLayout>
   );

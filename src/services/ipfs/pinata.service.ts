@@ -6,6 +6,8 @@ interface FileData {
   mimeType: string;
 }
 
+const PINATA_JWT = import.meta.env.VITE_PINATA_JWT as string;
+
 export async function storeFile(
   { fileData, fileName, mimeType }: FileData,
   name: string
@@ -27,7 +29,7 @@ export async function storeFile(
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${process.env.PINATA_JWT}`,
+          Authorization: `Bearer ${PINATA_JWT}`,
         },
         body: data,
       }

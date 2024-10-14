@@ -156,7 +156,11 @@ export default function FormCreateCampaign() {
        * Transform file
        */
       const base64File = await fileToBase64(file);
+      console.log("Base64 File:", base64File);
+
       const mimeType = file.type;
+      console.log("MIME Type:", mimeType);
+
       const fileData = {
         fileData: base64File,
         fileName: file.name,
@@ -174,13 +178,12 @@ export default function FormCreateCampaign() {
       return result?.IpfsHash;
     };
 
-    // Store each image and admission proof to IPFS
-    const studentImageCID = await storeImageToIPFS(studentImage, values.title);
-    const admissionProofCID = await storeImageToIPFS(
-      admissionProof,
-      values.title
-    );
-    const resultImageCID = await storeImageToIPFS(resultImage, values.title);
+    const [studentImageCID, admissionProofCID, resultImageCID] =
+      await Promise.all([
+        storeImageToIPFS(studentImage, values.title),
+        storeImageToIPFS(admissionProof, values.title),
+        storeImageToIPFS(resultImage, values.title),
+      ]);
 
     if (!studentImageCID || !admissionProofCID || !resultImageCID) {
       toast.error("Failed to upload one or more files to IPFS");
