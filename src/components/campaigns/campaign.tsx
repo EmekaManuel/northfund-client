@@ -50,6 +50,13 @@ export const CampaignDetail = ({
     endTimestamp,
     donationCompleted,
     claimed,
+    email,
+    admissionProofUrl,
+    universityName,
+    matricNumber,
+    courseOfStudy,
+    yearOfEntry,
+    studentResultImageUrl,
   },
   handleUpdateCampaign,
 }: CampaignDetailProps) => {
@@ -185,11 +192,11 @@ export const CampaignDetail = ({
                 </div>
 
                 <div
-                  className={`flex min-w-[70px] flex-col gap-[5px] rounded-sm ${
+                  className={`flex min-w-[70px] flex-row py-1 items-center justify-center gap-[5px] rounded-md ${
                     donationCompleted ? "bg-green-500" : "bg-blue-500"
                   } px-5 font-semibold`}
                 >
-                  <span className="text-[12px]">Goal</span>
+                  <span className="text-[14px]">Goal {"->"}</span>
                   <span className="text-[14px]">{goal} SOL</span>
                 </div>
               </div>
@@ -273,7 +280,7 @@ export const CampaignDetail = ({
             </Button>
 
             <Button
-              variant={"outline"}
+              variant={"destructive"}
               onClick={handleCancelCampaign}
               disabled={startTimestamp < currentTime}
             >
@@ -301,6 +308,45 @@ export const CampaignDetail = ({
             </Button>
           </div>
         )}
+      </div>
+
+      <div className="md:col-span-1 pt-10">
+        <div className="space-y-4">
+          {[
+            { label: "Email", value: email },
+            { label: "Matriculation Number", value: matricNumber },
+            { label: "University Name", value: universityName },
+            { label: "Course Of Study", value: courseOfStudy },
+            { label: "Year Of Entry", value: yearOfEntry },
+          ].map(({ label, value }, index) => (
+            <div
+              key={index}
+              className="border-b-2 border-primary py-4 md:flex md:justify-between"
+            >
+              <span className="text-sm font-bold text-gray-100">{label}</span>
+              <p className="mt-2 md:mt-0 text-gray-300">{value}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="md:col-span-2 grid grid-cols-1 gap-[15px] border-y-[2px] border-primary py-[15px] md:grid-cols-2 md:gap-[15px] md:py-[20px]">
+        <div className="border-primary md:border-r-[2px] space-y-5  md:pr-[15px]">
+          <span className="text-[14px] font-bold">Admission Letter</span>
+          <img
+            src={admissionProofUrl}
+            alt="admission proof image"
+            className="w-full max-w-md object-contain transition-transform duration-300 "
+          />
+        </div>
+        <div className="flex flex-col justify-between space-y-5 md:pl-[15px]">
+          <span className="text-[14px] font-bold">Student Result</span>
+          <img
+            src={studentResultImageUrl}
+            alt="student result image"
+            className="w-full max-w-md object-contain transition-transform duration-300 "
+          />
+        </div>
       </div>
     </div>
   );

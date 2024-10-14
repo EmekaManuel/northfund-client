@@ -27,11 +27,11 @@ export const CardCampaign = ({
       }campaigns/${pdaAddress}`}
       className="flex flex-col gap-[15px] rounded-md border p-[10px] shadow dark:shadow-gray-800"
     >
-      <div className="relative h-[200px] w-full overflow-hidden">
+      <div className="relative h-[200px] w-[full] overflow-hidden">
         <img
           src={imageLink}
           alt="campaign image"
-          className="transition-all delay-100 hover:scale-125"
+          className="w-full h-full object-cover transition-transform duration-300"
         />
       </div>
 

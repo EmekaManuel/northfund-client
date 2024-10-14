@@ -11,11 +11,14 @@ import {
 } from "@/components/ui/breadcrumb";
 import { truncateAddress } from "@/utils";
 
-const CampaignDetailPage = () => {
-  const { pda } = useParams<{ pda: string }>();
+const AllCampaignDetailPage = () => {
+  const { pdaAddress } = useParams<{ pdaAddress: string }>();
 
+  if (!pdaAddress) {
+    return <div>Loading campaign details...</div>;
+  }
   return (
-    <ContentLayout title={`Campaign: ${truncateAddress(pda)}`}>
+    <ContentLayout title={`Campaign: ${truncateAddress(pdaAddress)}`}>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
@@ -31,13 +34,13 @@ const CampaignDetailPage = () => {
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{truncateAddress(pda)}</BreadcrumbPage>
+            <BreadcrumbPage>{truncateAddress(pdaAddress)}</BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <CampaignDetails pda={pda} />
+      <CampaignDetails pda={pdaAddress} />
     </ContentLayout>
   );
 };
 
-export default CampaignDetailPage;
+export default AllCampaignDetailPage;

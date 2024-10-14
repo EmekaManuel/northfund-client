@@ -29,11 +29,9 @@ export const CardCampaign = ({
     >
       <div className="relative h-[200px] w-full overflow-hidden">
         <img
-          // objectFit="cover"
-          // layout="fill"
           src={imageLink}
           alt="campaign image"
-          className="transition-all delay-100 hover:scale-125"
+          className="w-full h-full object-cover transition-transform duration-300"
         />
       </div>
 
