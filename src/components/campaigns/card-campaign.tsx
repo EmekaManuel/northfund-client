@@ -1,7 +1,6 @@
-import React from "react";
 import { Progress } from "@/components/ui/progress";
-import Link from "react-router-dom";
 import { usePathname } from "next/navigation";
+import { NavLink } from "react-router-dom";
 
 export interface CardCampaignProps {
   imageLink: string;
@@ -22,7 +21,7 @@ export const CardCampaign = ({
   const raisedPercent = Math.floor((raised / goal) * 100);
 
   return (
-    <Link
+    <NavLink
       to={`/${
         pathname.includes("/dashboard") ? "dashboard/" : ""
       }campaigns/${pdaAddress}`}
@@ -55,6 +54,6 @@ export const CardCampaign = ({
           </div>
         </div>
       </div>
-    </Link>
+    </NavLink>
   );
 };

@@ -1,7 +1,4 @@
-"use client";
-
 import { Progress } from "@/components/ui/progress";
-import Image from "next/image";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 export interface CardCampaignProps {
@@ -31,9 +28,7 @@ export const CardCampaign = ({
       className="flex flex-col gap-[15px] rounded-md border p-[10px] shadow dark:shadow-gray-800"
     >
       <div className="relative h-[200px] w-full overflow-hidden">
-        <Image
-          objectFit="cover"
-          layout="fill"
+        <img
           src={imageLink}
           alt="campaign image"
           className="transition-all delay-100 hover:scale-125"

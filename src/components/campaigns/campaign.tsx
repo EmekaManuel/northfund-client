@@ -6,7 +6,6 @@ import {
   CopyIcon,
 } from "@radix-ui/react-icons";
 import { Progress } from "@/components/ui/progress";
-import Image from "next/image";
 import { useContext } from "react";
 import { Button } from "@/components/ui/button";
 import { DonationModal } from "./donation-modal";
@@ -124,9 +123,7 @@ export const CampaignDetail = ({
   return (
     <div className="grid grid-cols-1 gap-[25px] md:grid-cols-3">
       <div className="relative hidden overflow-hidden rounded-md md:block">
-        <Image
-          objectFit="cover"
-          layout="fill"
+        <img
           src={studentImageUrl}
           alt="campaign image"
           className="transition-all delay-100 hover:scale-125"

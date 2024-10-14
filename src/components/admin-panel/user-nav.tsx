@@ -1,4 +1,4 @@
-import Link from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { LayoutGrid, LogOut, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -53,16 +53,16 @@ export function UserNav() {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link to="/dashboard" className="flex items-center">
+            <NavLink to="/dashboard" className="flex items-center">
               <LayoutGrid className="mr-3 h-4 w-4 text-muted-foreground" />
               Dashboard
-            </Link>
+            </NavLink>
           </DropdownMenuItem>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link to="/account" className="flex items-center">
+            <NavLink to="/account" className="flex items-center">
               <User className="mr-3 h-4 w-4 text-muted-foreground" />
               Account
-            </Link>
+            </NavLink>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
