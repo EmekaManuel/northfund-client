@@ -29,6 +29,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+const APP_URL = import.meta.env.VITE_APP_URL as string;
+
 export interface CampaignDetailProps {
   campaign: CampaignData;
   handleUpdateCampaign?: () => void;
@@ -135,7 +137,7 @@ export const CampaignDetail = ({
           <p className="text-[22px] font-bold">{title}</p>
 
           <CopyText
-            text={`${process.env.NEXT_PUBLIC_APP_URL}/campaigns/${pdaAddress}`}
+            text={`${APP_URL}/campaigns/${pdaAddress}`}
             className="cursor-pointer"
           >
             <TooltipProvider>
@@ -170,7 +172,7 @@ export const CampaignDetail = ({
 
         <div className="grid grid-cols-1 gap-[15px] border-y-[2px] border-primary py-[15px] md:grid-cols-2 md:gap-0 md:py-0">
           <div className="border-primary md:border-r-[2px] md:py-[20px] md:pr-[15px]">
-            <span className="text-[14px] font-bold">About Project</span>
+            <span className="text-[14px] font-bold">About Funding</span>
             <p>{fundingReason}</p>
           </div>
 
@@ -178,14 +180,14 @@ export const CampaignDetail = ({
             <div className="flex flex-col gap-[10px]">
               <div className="flex items-center justify-between">
                 <div className="flex flex-col gap-[5px] font-semibold">
-                  <span className="text-[12px]">TotalDonated</span>
+                  <span className="text-[12px]">Total Donated</span>
                   <span className="text-[14px]">{totalDonated} SOL</span>
                 </div>
 
                 <div
                   className={`flex min-w-[70px] flex-col gap-[5px] rounded-sm ${
                     donationCompleted ? "bg-green-500" : "bg-blue-500"
-                  } p-1 font-semibold`}
+                  } px-5 font-semibold`}
                 >
                   <span className="text-[12px]">Goal</span>
                   <span className="text-[14px]">{goal} SOL</span>
@@ -206,7 +208,7 @@ export const CampaignDetail = ({
                     <p>Campaign Started</p>
                   ) : (
                     <p>
-                      {"start in "}
+                      {"Campaign starts in "}
                       {startDays > 0 && (
                         <span>
                           {startDays} {startDays > 1 ? "days" : "day"}
