@@ -20,7 +20,7 @@ import {
 import { PublicKey } from "@solana/web3.js";
 import { CampaignData } from "@/types";
 import { delay } from "@/utils/delay";
-import { usePathname } from "next/navigation";
+import { useLocation } from "react-router-dom";
 import { CopyText } from "../copy-text";
 import {
   Tooltip,
@@ -51,8 +51,8 @@ export const CampaignDetail = ({
   },
   handleUpdateCampaign,
 }: CampaignDetailProps) => {
-  const pathname = usePathname();
-  const isDashboard = pathname.includes("/dashboard");
+  const location = useLocation();
+  const isDashboard = location.pathname.includes("/dashboard");
 
   const totalDonatedPercent = Math.floor((totalDonated / goal) * 100);
   const {
