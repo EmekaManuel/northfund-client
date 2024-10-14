@@ -323,16 +323,16 @@ export const CampaignDetail = ({
               key={index}
               className="border-b-2 border-primary py-4 md:flex md:justify-between"
             >
-              <span className="text-sm font-bold text-gray-100">{label}</span>
-              <p className="mt-2 md:mt-0 text-gray-300">{value}</p>
+              <span className="text-sm font-bold ">{label}</span>
+              <p className="mt-2 md:mt-0 ">{value}</p>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="md:col-span-2 grid grid-cols-1 gap-[15px] border-y-[2px] border-primary py-[15px] md:grid-cols-2 md:gap-[15px] md:py-[20px]">
-        <div className="border-primary md:border-r-[2px] space-y-5  md:pr-[15px]">
-          <span className="text-[14px] font-bold">Admission Letter</span>
+      <div className="md:col-span-2 grid grid-cols-1 gap-[15px] border-y-[2px] border-primary dark:border-gray-700 py-[15px] md:grid-cols-2 md:gap-[15px] md:py-[20px]">
+        <div className="border-primary dark:border-gray-700 md:border-r-[2px] space-y-5 md:pr-[15px]">
+          <span className="text-[14px] font-bold ">Admission Letter</span>
           <img
             src={admissionProofUrl}
             alt="admission proof image"
