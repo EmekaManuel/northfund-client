@@ -50,8 +50,8 @@ const HomePage = () => {
         </div>
       </header>
       <main className="min-h-[calc(100vh-57px-97px)] flex-1">
-        <div className="container relative pb-10">
-          <section className="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-6">
+        <div className="container relative pb-1">
+          <section className="mx-auto  flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-4 md:pb-4 lg:py-8 lg:pb-2">
             <h1 className="text-center text-3xl font-bold lg:mb-5 leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]">
               Support Students with NorthFund
             </h1>
@@ -75,36 +75,6 @@ const HomePage = () => {
           </section>
           <div className="relative flex w-full justify-center">
             <CustomGlobe />,
-            {/* <Image
-              src="/mdwhite.png"
-              width={1080}
-              height={608}
-              alt="demo"
-              priority
-              className="rounded-xl border shadow-sm dark:hidden"
-            />
-            <Image
-              src="/mdblack.png"
-              width={1080}
-              height={608}
-              alt="demo-dark"
-              priority
-              className="hidden rounded-xl border border-zinc-600 shadow-sm dark:block dark:shadow-gray-500/5"
-            />
-            <Image
-              src="/smwhite.png"
-              width={228}
-              height={494}
-              alt="demo-mobile"
-              className="absolute bottom-0 right-0 hidden rounded-xl border dark:hidden lg:block"
-            />
-            <Image
-              src="/smblack.png"
-              width={228}
-              height={494}
-              alt="demo-mobile"
-              className="absolute bottom-0 right-0 hidden rounded-xl border border-zinc-600 dark:lg:block"
-            /> */}
           </div>
         </div>
       </main>

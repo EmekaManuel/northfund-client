@@ -17,6 +17,28 @@ export default function CustomGlobe() {
     label: country.name,
   });
   const [hex, setHex] = useState({ features: [] });
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Detect dark mode
+    const darkModeMediaQuery = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    );
+
+    // Set the initial mode
+    setIsDarkMode(darkModeMediaQuery.matches);
+
+    // Add an event listener for changes in theme
+    const handleThemeChange = (e: MediaQueryListEvent) => {
+      setIsDarkMode(e.matches);
+    };
+
+    darkModeMediaQuery.addEventListener("change", handleThemeChange);
+
+    return () => {
+      darkModeMediaQuery.removeEventListener("change", handleThemeChange);
+    };
+  }, []);
 
   useEffect(() => {
     setHex(HEX_DATA);
@@ -68,7 +90,7 @@ export default function CustomGlobe() {
       backgroundColor="rgba(0,0,0,0)"
       labelsData={[selectedCountry]}
       labelText={"label"}
-      height={500}
+      height={450}
       labelSize={1.6}
       animateIn={false}
       labelColor={useCallback(() => "white", [])}
@@ -77,7 +99,10 @@ export default function CustomGlobe() {
       hexPolygonsData={hex.features}
       hexPolygonResolution={3} //values higher than 3 makes it buggy
       hexPolygonMargin={0.62}
-      hexPolygonColor={useCallback(() => "#1b66b1", [])}
+      hexPolygonColor={useCallback(
+        () => (isDarkMode ? "#f0ad4e" : "#0969bc"),
+        [isDarkMode]
+      )} // Change color based on theme
     />
   );
 }
