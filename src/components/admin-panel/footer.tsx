@@ -1,27 +1,27 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 export function Footer() {
   return (
     <div className="z-20 w-full bg-background/95 shadow backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="mx-4 flex h-14 items-center md:mx-8">
         <p className="text-left text-xs leading-loose text-muted-foreground md:text-sm">
           Built by{" "}
-          <Link
-            to="https://github.com/Kds-JS"
+          <NavLink
+            to="https://github.com/emekamanuel"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium underline underline-offset-4"
           >
             Manuel Of The North
-          </Link>
-          {/* . The source code is available on{" "} */}
-          <Link
-            to="https://github.com/Kds-JS/crowdfunding-solana"
+          </NavLink>
+          . The source code is available on{" "}
+          <NavLink
+            to="https://github.com/emekamanuel"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium underline underline-offset-4"
           >
-            {/* GitHub */}
-          </Link>
+            GitHub
+          </NavLink>
           .
         </p>
       </div>

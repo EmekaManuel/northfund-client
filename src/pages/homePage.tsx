@@ -69,7 +69,7 @@ const HomePage = () => {
           <p className="text-balance text-center text-sm leading-loose text-muted-foreground">
             Built by{" "}
             <NavLink
-              to="https://www.0xkds.com/"
+              to="https://github.com/emekamanuel"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium underline underline-offset-4"
@@ -78,7 +78,7 @@ const HomePage = () => {
             </NavLink>
             . The source code is available on{" "}
             <NavLink
-              to="https://github.com/Kds-JS/solafund"
+              to="https://github.com/emekamanuel"
               target="_blank"
               rel="noopener noreferrer"
               className="font-medium underline underline-offset-4"

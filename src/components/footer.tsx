@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -6,23 +6,23 @@ const Footer = () => {
       <div className="mx-4 flex h-14 items-center md:mx-8">
         <p className="text-left text-xs leading-loose text-muted-foreground md:text-sm">
           Built by{" "}
-          <Link
-            to="https://github.com/"
+          <NavLink
+            to="https://github.com/emekamanuel"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium underline underline-offset-4"
           >
-            Kds
-          </Link>
+            Manuel Of The North
+          </NavLink>
           . The source code is available on{" "}
-          <Link
-            to="https://github.com/"
+          <NavLink
+            to="https://github.com/emekamanuel"
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium underline underline-offset-4"
           >
             GitHub
-          </Link>
+          </NavLink>
           .
         </p>
       </div>
