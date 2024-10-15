@@ -8,7 +8,9 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import CampaignList from "@/components/admin-panel/campaign-list";
+
+import { AllCampaignList } from "@/components/admin-panel/all-campaign-list";
+
 const AllCampaignsPage = () => {
   return (
     <ContentLayout title="All Campaigns">
@@ -25,7 +27,7 @@ const AllCampaignsPage = () => {
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <CampaignList />
+      <AllCampaignList />
     </ContentLayout>
   );
 };

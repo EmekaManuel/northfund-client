@@ -24,7 +24,7 @@ export const DonationModal = ({
   donationCompleted,
   handleUpdateCampaign,
 }: DonationModalProps) => {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(""); // Keep as string
   const currentTime = new Date().getTime();
   const ref = React.useRef();
 
@@ -33,15 +33,16 @@ export const DonationModal = ({
 
   async function handleSubmit() {
     if (program && publicKey) {
-      if (amount <= 0) {
+      if (!amount || Number(amount) <= 0) {
+        // Validate the amount
         toast.error("amount must be greater than 0");
         return;
       }
 
       try {
         const campaign = new PublicKey(pdaAddress);
-        await donate(program, campaign, publicKey, amount);
-        toast.success("donation successfull");
+        await donate(program, campaign, publicKey, Number(amount)); // Convert to number here
+        toast.success("donation successful");
         handleUpdateCampaign();
         (ref as any).current?.click();
       } catch (error: any) {
@@ -72,8 +73,9 @@ export const DonationModal = ({
           <div className="mb-[20px] flex flex-col gap-[5px]">
             <Input
               type="number"
+              placeholder="Input SOL amount to be donated"
               value={amount}
-              onChange={(e) => setAmount(Number(e.target.value))}
+              onChange={(e) => setAmount(e.target.value)} // Keep as string
             />
             <span className="text-sm">Amount in SOL</span>
           </div>
