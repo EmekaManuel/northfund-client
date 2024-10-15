@@ -100,7 +100,7 @@ export default function CustomGlobe() {
       hexPolygonResolution={3} //values higher than 3 makes it buggy
       hexPolygonMargin={0.62}
       hexPolygonColor={useCallback(
-        () => (isDarkMode ? "#f0ad4e" : "#0969bc"),
+        () => (isDarkMode ? "#f0ad4e" : "#f0ad4e"),
         [isDarkMode]
       )} // Change color based on theme
     />
