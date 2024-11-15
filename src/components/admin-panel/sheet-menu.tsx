@@ -32,7 +32,7 @@ export function SheetMenu() {
           >
             <Link to="/dashboard" className="flex items-center gap-2">
               <Logo />
-              <h1 className="text-lg font-bold">Solafund</h1>
+              <h1 className="text-lg font-bold">Northfund</h1>
             </Link>
           </Button>
         </SheetHeader>

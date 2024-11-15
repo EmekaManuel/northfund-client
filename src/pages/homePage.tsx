@@ -27,7 +27,7 @@ const HomePage = () => {
               className="h-8 w-8 rounded-full bg-background"
               asChild
             >
-              <NavLink to="https://github.com/Kds-JS/solafund">
+              <NavLink to="">
                 <GitHubLogoIcon className="h-[1.2rem] w-[1.2rem]" />
               </NavLink>
             </Button>
