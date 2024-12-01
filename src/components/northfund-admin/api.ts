@@ -2,6 +2,10 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import { CampaignData } from "./type";
+interface AuthorizeCampaignResponse {
+  message: string;
+  campaign: any;
+}
 
 export async function storeDataToBackend(campaignData: CampaignData) {
   try {
@@ -44,12 +48,6 @@ export async function getCampaignDataFromBackend() {
   }
 }
 
-interface AuthorizeCampaignResponse {
-  message: string;
-  campaign: any;
-}
-
-// The function to authorize the campaign
 export const authorizeCampaign = async (
   startDate: string,
   email: string,
@@ -79,4 +77,40 @@ export const authorizeCampaign = async (
   }
 };
 
-export default authorizeCampaign;
+export const checkCampaignApproval = async (
+  name: any,
+  email: any,
+  title: any
+) => {
+  try {
+    console.log(name, email, title);
+    const apiUrl = "http://localhost:3000";
+
+    const response = await axios.post(
+      `${apiUrl}/api/campaign/authorize-campaign`,
+      {
+        name,
+        email,
+        title,
+      }
+    );
+
+    if (response.status === 200) {
+      console.log(response.data.message);
+      return response.data;
+    }
+  } catch (error) {
+    if (error.response) {
+      console.error(
+        "Error:",
+        error.response.data.message || error.response.data.error
+      );
+      throw new Error(error.response.data.message || error.response.data.error);
+    } else {
+      console.error("Network error:", error.message);
+      throw new Error(
+        "An error occurred while checking the campaign approval."
+      );
+    }
+  }
+};

@@ -28,6 +28,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { checkCampaignApproval } from "../northfund-admin/api";
 
 const APP_URL = import.meta.env.VITE_APP_URL as string;
 
@@ -87,6 +88,26 @@ export const CampaignDetail = ({
   async function handleClaimDonations() {
     if (program && publicKey) {
       try {
+        const campaignData = {
+          name,
+          email,
+          title,
+        };
+
+        const approvalResult = await checkCampaignApproval(
+          campaignData.name,
+          campaignData.email,
+          campaignData.title
+        );
+
+        if (
+          !approvalResult ||
+          approvalResult.message !== "Campaign is approved for withdrawal"
+        ) {
+          toast.error("Campaign is not approved for withdrawal.");
+          return;
+        }
+
         const campaign = new PublicKey(pdaAddress);
         await claimDonations(program, campaign);
         toast.success("donations claimed");

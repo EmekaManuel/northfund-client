@@ -3,9 +3,8 @@ import { columns } from "@/components/northfund-admin/columns";
 import { DataTable } from "@/components/northfund-admin/data.table";
 import { Modal } from "@/components/northfund-admin/modal";
 import { useEffect, useState } from "react";
-import authorizeCampaign from "@/components/northfund-admin/api";
 import { toast } from "react-toastify";
-
+import { authorizeCampaign } from "@/components/northfund-admin/api";
 const AdminPage = () => {
   const [selectedCampaign, setSelectedCampaign] = useState(null);
   const [campaigns, setCampaigns] = useState([]);
