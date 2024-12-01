@@ -139,13 +139,13 @@ export default function FormCreateCampaign() {
       if (response.status === 201) {
         console.log(response.data);
         toast.success("Campaign created successfully in the backend!");
-        return true; // Successfully created in backend
+        return true;
       } else {
         throw new Error("Failed to create campaign in backend.");
       }
     } catch (error: any) {
       toast.error(`Error sending campaign data to backend: ${error.message}`);
-      throw error; // Rethrow error to propagate it
+      throw error;
     }
   }
 

@@ -10,12 +10,25 @@ import AdminPanelLayout from "@/components/admin-panel/admin-panel-layout";
 import CampaignLayout from "@/components/campaigns/campaign-layout";
 import MyCampaignDetailsPage from "@/pages/myCampaignDetailPage";
 import AllCampaignDetailPage from "@/pages/campaignDetailPage";
+import AdminPage from "@/pages/adminPage";
+import LoginPage from "@/components/northfund-admin/login";
 // const DashboardPage = lazy(() => import("../pages/dashboardPage"));
 
 export const routes = [
   {
     path: "/",
     element: <HomePage />,
+    layout: "home",
+  },
+
+  {
+    path: "/admin",
+    element: <LoginPage />,
+    layout: "home",
+  },
+  {
+    path: "/admin/dashboard",
+    element: <AdminPage />,
     layout: "home",
   },
   {
