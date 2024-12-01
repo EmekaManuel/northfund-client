@@ -231,12 +231,15 @@ export default function FormCreateCampaign() {
         end_at: values.end_at,
       };
 
-      // 1. Send campaign data to the MongoDB backend
-      storeDataToBackend(campaignData).then(() => {
-        console.log("Sent to backend successfully!");
-      });
+      try {
+        await storeDataToBackend(campaignData);
+        toast.success("Campaign created successfully!");
+      } catch (error) {
+        toast.error("Error creating campaign: " + error.message);
+        console.error("Error creating campaign:", error);
+      }
 
-      // //  then send data to the blockchain
+      //  then send data to the blockchain
       const tx = await createCampaign(program, publicKey, {
         email: values.email,
         title: values.title,
