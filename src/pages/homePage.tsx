@@ -401,7 +401,7 @@ const HomePage = () => {
                 © 2025 NorthFund. All rights reserved. Empowering education
                 through blockchain technology.
               </p>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground">
+              {/* <div className="flex items-center gap-4 text-sm text-muted-foreground">
                 <span>Built with ❤️ by</span>
                 <NavLink
                   to="https://github.com/emekamanuel"
@@ -411,7 +411,7 @@ const HomePage = () => {
                 >
                   Manuel Of The North
                 </NavLink>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
