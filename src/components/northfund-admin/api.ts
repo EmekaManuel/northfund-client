@@ -9,7 +9,7 @@ interface AuthorizeCampaignResponse {
 
 export async function storeDataToBackend(campaignData: CampaignData) {
   try {
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://northfund-admin-server.onrender.com";
 
     const response = await axios.post(
       `${apiUrl}/api/campaign/create-campaign`,
@@ -31,7 +31,7 @@ export async function storeDataToBackend(campaignData: CampaignData) {
 
 export async function getCampaignDataFromBackend() {
   try {
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://northfund-admin-server.onrender.com";
 
     const response = await axios.get(`${apiUrl}/api/admin/campaigns`);
     if (response.status === 200) {
@@ -55,7 +55,7 @@ export const authorizeCampaign = async (
   status: "approved" | "rejected"
 ): Promise<AuthorizeCampaignResponse> => {
   try {
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://northfund-admin-server.onrender.com";
 
     const response = await axios.put(
       `${apiUrl}/api/admin/campaigns/authorize`,
@@ -84,7 +84,7 @@ export const checkCampaignApproval = async (
 ) => {
   try {
     console.log(name, email, title);
-    const apiUrl = "http://localhost:3000";
+    const apiUrl = "https://northfund-admin-server.onrender.com";
 
     const response = await axios.post(
       `${apiUrl}/api/campaign/authorize-campaign`,
